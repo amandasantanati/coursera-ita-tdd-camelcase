@@ -8,9 +8,15 @@ import static org.hamcrest.core.Is.is;
 
 public class StringConverterTest {
     @Test
-    public void shouldReturnOneTinyWordGivenOneTinyWord() {
+    public void shouldReturnOneLowercaseWordGivenOneLowercaseWord() {
         List<String> expectedValue = Collections.singletonList("nome");
         assertThat(StringConverter.converterCamelCase("nome"), is(expectedValue));
+    }
+
+    @Test
+    public void shouldReturnOneLowercaseWordGivenOneUppercaseWord() {
+        List<String> expectedValue = Collections.singletonList("composto");
+        assertThat(StringConverter.converterCamelCase("Composto"), is(expectedValue));
     }
 
 }
