@@ -24,6 +24,7 @@ numeroCPFContribuinte - “numero”, “CPF”, “contribuinte”
 recupera10Primeiros - “recupera”, “10”, “primeiros”
 10Primeiros - Inválido → não deve começar com números
 nome#Composto - Inválido → caracteres especiais não são permitidos, somente letras e números
+
 É permitida a criação de métodos auxiliares. Para ficar mais divertido e praticar a refatoração, nenhum método pode possuir mais de dez linhas de código em seu corpo. Não vale “roubar” e incluir vários comandos em uma mesma linha de código!
 
 Para cada refatoração que precisar fazer nesse processo, adicione uma seção no relatório o seguinte: como estava o código antes, como ficou o código depois da refatoração e uma pequena descrição textual do que foi feito.
