@@ -14,6 +14,7 @@ Para cada ciclo que você fizer no TDD, adicione uma seção no relatório o seg
 
 Abaixo seguem alguns exemplos de entrada e saída que você pode usar como base para os seus testes (crie adicionais ou diferentes se achar necessário):
 
+<pre>
 nome - “nome”
 Nome - “nome”
 nomeComposto - “nome”, “composto”
@@ -24,6 +25,7 @@ numeroCPFContribuinte - “numero”, “CPF”, “contribuinte”
 recupera10Primeiros - “recupera”, “10”, “primeiros”
 10Primeiros - Inválido → não deve começar com números
 nome#Composto - Inválido → caracteres especiais não são permitidos, somente letras e números
+</pre>
 
 É permitida a criação de métodos auxiliares. Para ficar mais divertido e praticar a refatoração, nenhum método pode possuir mais de dez linhas de código em seu corpo. Não vale “roubar” e incluir vários comandos em uma mesma linha de código!
 
