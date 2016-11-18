@@ -1,34 +1,37 @@
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StringConverter {
-    private static final int INITIAL_LETTER = 0;
-    private static int position = 0;
+    private static final String REPLACEMENT = " ";
 
     public static List<String> converterCamelCase(String original) {
-        if(retriveWhereCapitalLetterIs(original) != INITIAL_LETTER) {
-            return breakWords(original);
-        };
-
-        return Collections.singletonList(original.toLowerCase());
+        return breakWords(original);
     }
 
-    private static int retriveWhereCapitalLetterIs(String original) {
-        for(int i = 0; i < original.length(); i++) {
-            if(Character.isUpperCase(original.charAt(i))) {
-                position = i;
-                return i;
-            }
-        }
-
-        return 0;
+    private static String splitCamelCase(String original) {
+        return original.replaceAll(
+                String.format("%s|%s|%s",
+                        "(?<=[A-Z])(?=[A-Z][a-z])",
+                        "(?<=[^A-Z])(?=[A-Z])",
+                        "(?<=[A-Za-z])(?=[^A-Za-z])"
+                ),
+                REPLACEMENT
+        );
     }
 
     private static List<String> breakWords(String original) {
-        return Arrays.asList(
-                original.substring(0, position).toLowerCase(),
-                original.substring(position).toLowerCase()
-        );
+        String[] words = splitCamelCase(original).split(REPLACEMENT);
+
+        return makeListAtLowercase(words);
+    }
+
+    private static List<String> makeListAtLowercase(String[] words) {
+        List<String> lowerWords = new ArrayList<String>();
+
+        for (String word : words) {
+            lowerWords.add(word.toLowerCase());
+        }
+
+        return lowerWords;
     }
 }

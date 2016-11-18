@@ -21,8 +21,21 @@ public class StringConverterTest {
     }
 
     @Test
-    public void shouldReturnTwoLowercaseWordsGivenOneLowercaseWordAndOneUppercaseword() {
+    public void shouldReturnTwoLowercaseWordsGivenOneLowercaseWordAndOneUppercaseWord() {
         List<String> expectedValue = Arrays.asList("nome","composto");
         assertThat(StringConverter.converterCamelCase("nomeComposto"), is(expectedValue));
+    }
+
+    @Test
+    public void shouldReturnTwoLowercaseWordsGivenTwoUppercaseWords() {
+        List<String> expectedValue = Arrays.asList("nome","composto");
+        assertThat(StringConverter.converterCamelCase("NomeComposto"), is(expectedValue));
+    }
+
+    @Test
+    public void shouldReturnAnyLowercaseWordsGivenAnyWords() {
+        List<String> expectedValue = Arrays.asList("nome","composto","completo");
+        assertThat(StringConverter.converterCamelCase("nomeCompostoCompleto"), is(expectedValue));
+        assertThat(StringConverter.converterCamelCase("NomeCompostoCompleto"), is(expectedValue));
     }
 }
