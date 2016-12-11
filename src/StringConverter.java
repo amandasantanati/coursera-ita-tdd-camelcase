@@ -29,9 +29,22 @@ public class StringConverter {
         List<String> lowerWords = new ArrayList<String>();
 
         for (String word : words) {
-            lowerWords.add(word.toLowerCase());
+            if(isAllUpper(word)) {
+                lowerWords.add(word);
+            } else {
+                lowerWords.add(word.toLowerCase());
+            }
         }
 
         return lowerWords;
+    }
+
+    private static boolean isAllUpper(String word) {
+        for(char letter : word.toCharArray()) {
+            if(Character.isLowerCase(letter)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

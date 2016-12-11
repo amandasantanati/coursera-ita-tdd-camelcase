@@ -39,5 +39,21 @@ public class StringConverterTest {
         assertThat(StringConverter.converterCamelCase("NomeCompostoCompleto"), is(expectedValue));
     }
 
-    
+    @Test
+    public void shouldReturnAllUppercaseWordsIfAllIsUppercase() {
+        List<String> expectedValue = Arrays.asList("CPF");
+        assertThat(StringConverter.converterCamelCase("CPF"), is(expectedValue));
+    }
+
+    @Test
+    public void shouldReturnLowercaseOnlyWhenTheresNoConsecutiveLetterInUpperCase() {
+        List<String> expectedValue = Arrays.asList("numero", "CPF");
+        assertThat(StringConverter.converterCamelCase("numeroCPF"), is(expectedValue));
+    }
+
+    @Test
+    public void shouldReturnLowercaseOnlyWhenTheresNoConsecutiveLetterInUpperCaseEvenWithOneMoreWordAfterTheAcronym() {
+        List<String> expectedValue = Arrays.asList("numero", "CPF", "contribuinte");
+        assertThat(StringConverter.converterCamelCase("numeroCPFContribuinte"), is(expectedValue));
+    }
 }
