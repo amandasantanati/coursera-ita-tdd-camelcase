@@ -38,4 +38,6 @@ public class StringConverterTest {
         assertThat(StringConverter.converterCamelCase("nomeCompostoCompleto"), is(expectedValue));
         assertThat(StringConverter.converterCamelCase("NomeCompostoCompleto"), is(expectedValue));
     }
+
+    
 }
