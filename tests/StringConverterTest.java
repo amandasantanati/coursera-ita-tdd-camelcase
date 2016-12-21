@@ -1,3 +1,4 @@
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -21,6 +22,12 @@ public class StringConverterTest {
     }
 
     @Test
+    public void shouldReturnAllUppercaseWordsIfAllIsUppercase() {
+        List<String> expectedValue = Arrays.asList("CPF");
+        assertThat(StringConverter.converterCamelCase("CPF"), is(expectedValue));
+    }
+
+    @Test
     public void shouldReturnTwoLowercaseWordsGivenOneLowercaseWordAndOneUppercaseWord() {
         List<String> expectedValue = Arrays.asList("nome","composto");
         assertThat(StringConverter.converterCamelCase("nomeComposto"), is(expectedValue));
@@ -37,12 +44,6 @@ public class StringConverterTest {
         List<String> expectedValue = Arrays.asList("nome","composto","completo");
         assertThat(StringConverter.converterCamelCase("nomeCompostoCompleto"), is(expectedValue));
         assertThat(StringConverter.converterCamelCase("NomeCompostoCompleto"), is(expectedValue));
-    }
-
-    @Test
-    public void shouldReturnAllUppercaseWordsIfAllIsUppercase() {
-        List<String> expectedValue = Arrays.asList("CPF");
-        assertThat(StringConverter.converterCamelCase("CPF"), is(expectedValue));
     }
 
     @Test

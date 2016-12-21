@@ -5,21 +5,20 @@ public class StringConverter {
     private static final String REPLACEMENT = " ";
 
     public static List<String> converterCamelCase(String original) {
-        return breakWords(original);
+        return splitWords(original);
     }
 
     private static String splitCamelCase(String original) {
         return original.replaceAll(
-                String.format("%s|%s|%s",
+                String.format("%s|%s",
                         "(?<=[A-Z])(?=[A-Z][a-z])",
-                        "(?<=[^A-Z])(?=[A-Z])",
-                        "(?<=[A-Za-z])(?=[^A-Za-z])"
+                        "(?<=[a-z])(?=[A-Z])"
                 ),
                 REPLACEMENT
         );
     }
 
-    private static List<String> breakWords(String original) {
+    private static List<String> splitWords(String original) {
         String[] words = splitCamelCase(original).split(REPLACEMENT);
 
         return makeListAtLowercase(words);
@@ -29,14 +28,18 @@ public class StringConverter {
         List<String> lowerWords = new ArrayList<String>();
 
         for (String word : words) {
-            if(isAllUpper(word)) {
-                lowerWords.add(word);
-            } else {
-                lowerWords.add(word.toLowerCase());
-            }
+            addToResultList(lowerWords, word);
         }
 
         return lowerWords;
+    }
+
+    private static void addToResultList(List<String> lowerWords, String word) {
+        if(isAllUpper(word)) {
+            lowerWords.add(word);
+        } else {
+            lowerWords.add(word.toLowerCase());
+        }
     }
 
     private static boolean isAllUpper(String word) {
