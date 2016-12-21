@@ -57,4 +57,10 @@ public class StringConverterTest {
         List<String> expectedValue = Arrays.asList("numero", "CPF", "contribuinte");
         assertThat(StringConverter.converterCamelCase("numeroCPFContribuinte"), is(expectedValue));
     }
+
+    @Test
+    public void shouldSplitWhenThereIsANumberInTheMiddle() {
+        List<String> expectedValue = Arrays.asList("recupera", "10", "primeiros");
+        assertThat(StringConverter.converterCamelCase("recupera10Primeiros"), is(expectedValue));
+    }
 }
