@@ -1,4 +1,3 @@
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -67,5 +66,10 @@ public class StringConverterTest {
     @Test(expected=IllegalArgumentException.class)
     public void shouldThrowExceptionWhenStartsWithNumber() {
         StringConverter.converterCamelCase("10primeiros");
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void shouldThrowExceptionWhenHasInvalidCaracteres() {
+        StringConverter.converterCamelCase("nome#Composto");
     }
 }

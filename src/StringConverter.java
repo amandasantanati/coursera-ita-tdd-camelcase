@@ -1,5 +1,8 @@
 import java.util.ArrayList;
+import java.util.IllegalFormatException;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringConverter {
     private static final String REPLACEMENT = " ";
@@ -9,7 +12,17 @@ public class StringConverter {
             throw new IllegalArgumentException("Não pode começar com número");
         }
 
+        if(containsIllegals(original)) {
+            throw new IllegalArgumentException("Não pode conter caracteres inválidos");
+        }
+
         return splitWords(original);
+    }
+
+    private static boolean containsIllegals(String original) {
+        Pattern pattern = Pattern.compile("[~#@*+%{}<>\\[\\]|\"\\_^]");
+        Matcher matcher = pattern.matcher(original);
+        return matcher.find();
     }
 
     private static boolean isBeginWithNUmber(String original) {
