@@ -63,4 +63,9 @@ public class StringConverterTest {
         List<String> expectedValue = Arrays.asList("recupera", "10", "primeiros");
         assertThat(StringConverter.converterCamelCase("recupera10Primeiros"), is(expectedValue));
     }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void shouldThrowExceptionWhenStartsWithNumber() {
+        StringConverter.converterCamelCase("10primeiros");
+    }
 }

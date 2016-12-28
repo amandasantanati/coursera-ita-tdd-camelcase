@@ -1,5 +1,3 @@
-import com.sun.javaws.exceptions.InvalidArgumentException;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +5,15 @@ public class StringConverter {
     private static final String REPLACEMENT = " ";
 
     public static List<String> converterCamelCase(String original) {
+        if(isBeginWithNUmber(original)) {
+            throw new IllegalArgumentException("Não pode começar com número");
+        }
+
         return splitWords(original);
+    }
+
+    private static boolean isBeginWithNUmber(String original) {
+        return Character.isDigit(original.charAt(0));
     }
 
     private static String splitCamelCase(String original) {
